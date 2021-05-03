@@ -1,3 +1,8 @@
+Created a modular web app using React.js for the front-end, using Fetch API properties to store and display.
+Used components to separate different code into different files, and used functional objects to store their states and display them to the app.
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
