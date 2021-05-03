@@ -5,22 +5,21 @@ function Vehicles(props) {
     const [name, setName] = useState("")
     const [model, setModel] = useState("")
     const [curid, setcurid] = useState(props.curid)
-    const [apiurl, setapiurl] = useState(props.apiurl)
-    useEffect(() => {
+    function reRender() {
         setcurid(props.curid)
-        setapiurl(props.apiurl)
-        setLoading(true)
-        fetch(apiurl)
+        fetch(props.apiurl)
         .then(response => response.json())
         .then(data => {
             setName(data.name)
             setModel(data.model)})
-        setLoading(false)
-    })
+    }
+    useEffect(() => {
+        reRender()
+    }, [props])
     return (
         <div>
             <h1> {loading && "Checking the API..."} </h1>
-            <h3> You are currently looking at {'https://swapi.dev/api/vehicles/'+curid.toString()+'/'}</h3>
+            <h3> You are currently looking at {props.apiurl}</h3>
             <p>The current id is {curid}.</p>
             <p> <b>{name}</b> {name != null ? 'is the name.' : "There is no name at this id."}</p> 
             <p> <b>{model}</b> {model != null ? 'is the model.' : "There is no model at this id."}</p> 
