@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react'
-
+import Films from './Films'
+import People from './People'
+import Planets from './Planets'
+import Species from './Species'
+import Starships from './Starships'
+import Vehicles from './Vehicles'
 function UseAPI() {
     const [loading, setLoading] = useState(false)
-    const [name, setName] = useState("")
     const [field, setfield] = useState("people")
     const [newfield, setnewfield] = useState("people")
     const [curid, setcurid] = useState(1)
@@ -18,33 +22,25 @@ function UseAPI() {
     }
     function fieldTo(event) 
     {
-        event.preventDefault();
         setnewfield(newfield)
-        setnewid(1)
     }
     function changeNewField(event) 
     {
         setnewfield(event.target.value)
     }
     useEffect(() => {
-        setapiurl('https://swapi.dev/api/'+newfield+'/'+newid.toString()+'/') 
-        setLoading(true);
-        fetch(apiurl)
-        .then(response => response.json())
-        .then(data => {
-            setName(data.name)})
         setcurid(newid)
         setfield(newfield)
-        setLoading(false);
+        setapiurl('https://swapi.dev/api/'+field+'/'+curid.toString()+'/') 
     })
-
     return (
         <div className="useAPI"> 
             <form onSubmit={fieldTo}>
                 <label>
                     Pick which part of the API to go through: <br />
                     <select value={newfield} onChange={changeNewField}>
-                        <option selected value="people">People</option>
+                        <option selected value="films">Films</option>
+                        <option value="people">People</option>
                         <option value="planets">Planets</option>
                         <option value="species">Species</option>
                         <option value="starships">Starships</option>
@@ -53,9 +49,12 @@ function UseAPI() {
                 </label>
             </form>
             <h1> {loading && "Checking the API..."} </h1>
-            <h3> You are currently looking at {'https://swapi.dev/api/'+newfield+'/'+curid.toString()+'/'}</h3>
-            <p>The current id is {curid}.</p>
-            <p> <b>{name}</b> {name != null ? 'is the name.' : "There is no name at this id."}</p> 
+            {field === 'films' && <Films curid= {curid} apiurl= {apiurl}/>}
+            {field === 'people' && <People curid= {curid} apiurl= {apiurl}/>}
+            {field === 'planets' && <Planets curid= {curid} apiurl= {apiurl}/>}
+            {field === 'species' && <Species curid= {curid} apiurl= {apiurl}/>}
+            {field === 'starships' && <Starships curid= {curid} apiurl= {apiurl}/>}
+            {field === 'vehicles' && <Vehicles curid= {curid} apiurl= {apiurl}/>}
             <button onClick={increment}> Increment the id</button>
             <button onClick={decrement}> Decrement the id</button>
         </div>

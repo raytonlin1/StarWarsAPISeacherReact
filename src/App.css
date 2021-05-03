@@ -54,7 +54,7 @@
 }
 
 .navbar {
-  background-color: burlywood;
+  background-color: orangered;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -79,7 +79,7 @@
 }
 
 .App-footer {
-  background-color: #68c990;
+  background-color: #282c34;
   display: flex;
   flex-direction: column;
   align-items: center;
