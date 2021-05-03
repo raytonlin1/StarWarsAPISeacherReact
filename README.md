@@ -1,3 +1,5 @@
+This is a modular web application which uses React.js for the front-end (there is no back-end). It uses Fetch API's on REST API's.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
