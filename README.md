@@ -1,4 +1,4 @@
-This is a modular web application which uses React.js for the front-end (there is no back-end). It uses Fetch API's on REST API's.
+This is a modular web application which uses React.js for the front-end (there is no back-end). It uses Fetch API's on REST API's. It requires node modules to run (they are not in this repository).
 
 # Getting Started with Create React App
 
